@@ -1,0 +1,69 @@
+name: patch keystone
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'  # 每天自动更新
+
+jobs:
+  update-patch:
+    runs-on: windows-latest
+    steps:
+      - name: Clone upstream repository
+        shell: bash
+        run: |
+          git clone --recursive "https://github.com/keystone-engine/keystone.git" 
+          cd keystone
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          echo "克隆完成，当前目录: $(pwd)"
+
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+        with:
+          path: current-repo
+
+      - name: Apply patch and push changes
+        shell: bash
+        run: |
+          cd keystone
+          cp "../current-repo/vs2022.patch" "temp.patch"
+          git apply "temp.patch"
+          rm "temp.patch"
+          
+          git add .
+          if ! git diff --cached --quiet; then
+            git commit -m "自动补丁更新 $(date +'%Y-%m-%d %H:%M')"
+            git remote set-url origin "https://github.com/ddkwork/keystone.git"
+            git push --force "https://ddkwork:$GH_TOKEN@github.com/ddkwork/keystone.git"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.tk }}
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Build with cmake
+        run: |
+          cd keystone
+          cmake -S  . -B build -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTS=OFF -DBUILD_EXAMPLES=OFF -DBUILD_PYTHON=OFF -DBUILD_JAVA=OFF -DBUILD_CSHARP=OFF -DBUILD_NODEJS=OFF -DBUILD_GO=OFF -DBUILD_C_BINDINGS=OFF -DBUILD_TOOLS=OFF -DBUILD_ARCH=x86_64 -DBUILD_X86=ON -DBUILD_ARM=OFF -DBUILD_ARM64=OFF -DBUILD_MIPS=OFF -DBUILD_MIPS64=OFF -DBUILD_PPC=OFF -DBUILD_PPC64=OFF -DBUILD_SPARC=OFF -DBUILD_SPARC64=OFF -DBUILD_SYSTEMZ=OFF -D
+        shell: cmd
+        working-directory: keystone  # 关键修复：设置工作目录
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: keystone-binaries
+          path: keystone/release
+          if-no-files-found: warn
+          retention-days: 1
+
+      - name: Clean up workspace
+        if: always()
+        run: |
+          rm -rf keystone
+          rm -rf current-repo
+        shell: bash
