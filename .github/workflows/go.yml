@@ -50,7 +50,8 @@ jobs:
       - name: Build with cmake
         run: |
           cd keystone
-          cmake -S  . -B build -G "Visual Studio 17 2022" -A x64 -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTS=OFF -DBUILD_EXAMPLES=OFF -DBUILD_PYTHON=OFF -DBUILD_JAVA=OFF -DBUILD_CSHARP=OFF -DBUILD_NODEJS=OFF -DBUILD_GO=OFF -DBUILD_C_BINDINGS=OFF -DBUILD_TOOLS=OFF -DBUILD_ARCH=x86_64 -DBUILD_X86=ON -DBUILD_ARM=OFF -DBUILD_ARM64=OFF -DBUILD_MIPS=OFF -DBUILD_MIPS64=OFF -DBUILD_PPC=OFF -DBUILD_PPC64=OFF -DBUILD_SPARC=OFF -DBUILD_SPARC64=OFF -DBUILD_SYSTEMZ=OFF -D
+          cmake -S release
+          cmake -B release -G "Visual Studio 17 2022" -A x64
         shell: cmd
         working-directory: keystone  # 关键修复：设置工作目录
 
