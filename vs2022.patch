@@ -6,8 +6,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	(revision fb92f32391c6cced868252167509590319eeb58b)
-+++ b/CMakeLists.txt	(revision cf76b8d940975f99443ebca8467554df34278c43)
+--- a/CMakeLists.txt	(revision 24bffaaba4071d1f8aa8c3ee604899644adf2833)
++++ b/CMakeLists.txt	(revision 4059fae1abf35e231b0d76027231db4e090568fe)
 @@ -1,8 +1,9 @@
  # Keystone Assembler Engine (www.keystone-engine.org)
  # By Nguyen Anh Quynh, 2016
@@ -50,8 +50,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/kstool/CMakeLists.txt b/kstool/CMakeLists.txt
---- a/kstool/CMakeLists.txt	(revision fb92f32391c6cced868252167509590319eeb58b)
-+++ b/kstool/CMakeLists.txt	(revision cf76b8d940975f99443ebca8467554df34278c43)
+--- a/kstool/CMakeLists.txt	(revision 24bffaaba4071d1f8aa8c3ee604899644adf2833)
++++ b/kstool/CMakeLists.txt	(revision 4059fae1abf35e231b0d76027231db4e090568fe)
 @@ -1,9 +1,10 @@
  # Kstool for Keystone assembler engine.
  # By Nguyen Anh Quynh, 2016
@@ -70,8 +70,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/llvm/CMakeLists.txt b/llvm/CMakeLists.txt
---- a/llvm/CMakeLists.txt	(revision fb92f32391c6cced868252167509590319eeb58b)
-+++ b/llvm/CMakeLists.txt	(revision cf76b8d940975f99443ebca8467554df34278c43)
+--- a/llvm/CMakeLists.txt	(revision 24bffaaba4071d1f8aa8c3ee604899644adf2833)
++++ b/llvm/CMakeLists.txt	(revision 4059fae1abf35e231b0d76027231db4e090568fe)
 @@ -1,6 +1,6 @@
  # See docs/CMake.html for instructions about how to build LLVM with CMake.
  
@@ -178,8 +178,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/llvm/include/llvm/ADT/STLExtras.h b/llvm/include/llvm/ADT/STLExtras.h
---- a/llvm/include/llvm/ADT/STLExtras.h	(revision fb92f32391c6cced868252167509590319eeb58b)
-+++ b/llvm/include/llvm/ADT/STLExtras.h	(revision cf76b8d940975f99443ebca8467554df34278c43)
+--- a/llvm/include/llvm/ADT/STLExtras.h	(revision 24bffaaba4071d1f8aa8c3ee604899644adf2833)
++++ b/llvm/include/llvm/ADT/STLExtras.h	(revision 4059fae1abf35e231b0d76027231db4e090568fe)
 @@ -33,30 +33,58 @@
  //     Extra additions to <functional>
  //===----------------------------------------------------------------------===//
@@ -266,8 +266,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/llvm/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.h b/llvm/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.h
---- a/llvm/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.h	(revision fb92f32391c6cced868252167509590319eeb58b)
-+++ b/llvm/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.h	(revision cf76b8d940975f99443ebca8467554df34278c43)
+--- a/llvm/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.h	(revision 24bffaaba4071d1f8aa8c3ee604899644adf2833)
++++ b/llvm/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.h	(revision 4059fae1abf35e231b0d76027231db4e090568fe)
 @@ -122,8 +122,7 @@
        { "fixup_riscv_relax",         0,      0,  0 },
        { "fixup_riscv_align",         0,      0,  0 }
@@ -278,3 +278,20 @@ diff --git a/llvm/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.h b/llvm/lib/Tar
  
      if (Kind < FirstTargetFixupKind)
        return MCAsmBackend::getFixupKindInfo(Kind);
+Index: samples/CMakeLists.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/samples/CMakeLists.txt b/samples/CMakeLists.txt
+--- a/samples/CMakeLists.txt	(revision 24bffaaba4071d1f8aa8c3ee604899644adf2833)
++++ b/samples/CMakeLists.txt	(revision 4059fae1abf35e231b0d76027231db4e090568fe)
+@@ -5,7 +5,7 @@
+ # For Windows, be sure to copy keystone.dll or keystone.lib
+ # to this directory before compiling
+ 
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.24)
+ 
+ project(sample)
+ 
