@@ -23,7 +23,7 @@ jobs:
           echo "克隆完成，当前目录: $(pwd)"
 
       - name: Checkout current repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: current-repo
 

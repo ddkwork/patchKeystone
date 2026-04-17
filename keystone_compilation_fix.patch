@@ -1,0 +1,25 @@
+diff --git a/llvm/CMakeLists.txt b/llvm/CMakeLists.txt
+index d926b08..69bf35b 100644
+--- a/llvm/CMakeLists.txt
++++ b/llvm/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ # See docs/CMake.html for instructions about how to build LLVM with CMake.
+ 
+-cmake_minimum_required(VERSION 2.8.7)
++cmake_minimum_required(VERSION 3.22)
+ 
+ set(LLVM_INSTALL_TOOLCHAIN_ONLY ON)
+ 
+diff --git a/llvm/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.h b/llvm/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.h
+index 42c6819..2d444e4 100644
+--- a/llvm/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.h
++++ b/llvm/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.h
+@@ -122,7 +122,7 @@ public:
+       { "fixup_riscv_relax",         0,      0,  0 },
+       { "fixup_riscv_align",         0,      0,  0 }
+     };
+-    static_assert((array_lengthof(Infos)) == RISCV::NumTargetFixupKinds,
++    static_assert(21 == RISCV::NumTargetFixupKinds,
+                   "Not all fixup kinds added to Infos array");
+ 
+     if (Kind < FirstTargetFixupKind)

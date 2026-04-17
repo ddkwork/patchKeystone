@@ -1,4 +1,3 @@
-暴力更新_2025-06-24_12_21.patch
-gio
+*.log
 .idea
-gio.tar
+build/
